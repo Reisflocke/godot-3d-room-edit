@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/red_wall.obj-ea2787bc2b72d3d46e3f2a3779893e48.mesh"
+
+[deps]
+
+files=[ "res://.import/red_wall.obj-ea2787bc2b72d3d46e3f2a3779893e48.mesh" ]
+
+source_file="res://demo_assets/wall/red_wall.obj"
+dest_files=[ "res://.import/red_wall.obj-ea2787bc2b72d3d46e3f2a3779893e48.mesh", "res://.import/red_wall.obj-ea2787bc2b72d3d46e3f2a3779893e48.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

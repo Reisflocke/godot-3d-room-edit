@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/MasonryTool/Editor/Edits/FloorEdit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/MasonryTool/Editor/Edits/WallContainer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/MasonryTool/Editor/MasonryEditor.gd" type="Script" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_unshaded = true
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 1, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -0.5, 3, 0.5, 0.5, 3, -0.5, 0.5, 3, 0.5, -0.5, 3, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 3, 0.5, -0.5, 3, -0.5, 0.5, 3, -0.5, -0.5, 3, 0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 3, 0.5, -0.5, 0, 0.5, -0.5, 3, 0.5, 0.5, 0, 0.5, 0.5, 3, -0.5, -0.5, 0, -0.5, -0.5, 3, -0.5, 0.5, 0, -0.5 )
+
+[node name="MasonryEditor" type="Spatial"]
+script = ExtResource( 3 )
+floor_edit = ExtResource( 1 )
+wall_container = ExtResource( 2 )
+wall_top = SubResource( 2 )
+wall_collision = SubResource( 3 )

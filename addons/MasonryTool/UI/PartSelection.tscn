@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/MasonryTool/UI/FileSelection.gd" type="Script" id=1]
+
+[node name="PartSelection" type="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+file_types = PoolStringArray( ".obj" )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer"]
+margin_right = 1272.0
+margin_bottom = 656.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+visible = false
+margin_top = 642.0
+margin_right = 1272.0
+margin_bottom = 656.0
+text = "Couldn't open directory ..."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 660.0
+margin_right = 1272.0
+margin_bottom = 684.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_right = 1226.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Load" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 1230.0
+margin_right = 1272.0
+margin_bottom = 24.0
+text = "Load"
+[connection signal="item_selected" from="VBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="text_entered" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="generate_item_list"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Load" to="." method="generate_item_list"]

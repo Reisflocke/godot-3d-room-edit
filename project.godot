@@ -1,0 +1,105 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "StaticBody",
+"class": "CollisionGenerator",
+"language": "GDScript",
+"path": "res://addons/ToolCore/Generator/CollisionGenerator.gd"
+}, {
+"base": "Spatial",
+"class": "EditorBase",
+"language": "GDScript",
+"path": "res://addons/MasonryTool/Editor/EditorBase.gd"
+}, {
+"base": "Control",
+"class": "FileSelectionBase",
+"language": "GDScript",
+"path": "res://addons/MasonryTool/UI/FileSelectionBase.gd"
+}, {
+"base": "Area",
+"class": "Interaction",
+"language": "GDScript",
+"path": "res://addons/ToolCore/GameMechanics/Interactions/Interaction.gd"
+}, {
+"base": "Interaction",
+"class": "LevelRoom",
+"language": "GDScript",
+"path": "res://addons/RoomTool/Room.gd"
+}, {
+"base": "Spatial",
+"class": "Masonry",
+"language": "GDScript",
+"path": "res://addons/MasonryTool/MasonryTool.gd"
+}, {
+"base": "Resource",
+"class": "MasonryData",
+"language": "GDScript",
+"path": "res://addons/MasonryTool/MasonryData.gd"
+}, {
+"base": "EditorBase",
+"class": "MasonryEditor",
+"language": "GDScript",
+"path": "res://addons/MasonryTool/Editor/MasonryEditor.gd"
+}, {
+"base": "Spatial",
+"class": "MasonryGenerator",
+"language": "GDScript",
+"path": "res://addons/MasonryTool/Generator/MasonryGenerator.gd"
+}, {
+"base": "MultiMeshInstance",
+"class": "MultiMeshMaker",
+"language": "GDScript",
+"path": "res://addons/ToolCore/Generator/MultiMeshMaker.gd"
+}, {
+"base": "Spatial",
+"class": "RoomConnector",
+"language": "GDScript",
+"path": "res://addons/RoomTool/RoomConnector.gd"
+}, {
+"base": "Spatial",
+"class": "RoomSystem",
+"language": "GDScript",
+"path": "res://addons/RoomTool/RoomTool.gd"
+}, {
+"base": "Spatial",
+"class": "RoomsEditor",
+"language": "GDScript",
+"path": "res://addons/RoomTool/Editor/RoomEditor.gd"
+} ]
+_global_script_class_icons={
+"CollisionGenerator": "",
+"EditorBase": "",
+"FileSelectionBase": "",
+"Interaction": "",
+"LevelRoom": "",
+"Masonry": "",
+"MasonryData": "",
+"MasonryEditor": "",
+"MasonryGenerator": "",
+"MultiMeshMaker": "",
+"RoomConnector": "res://addons/RoomTool/room_connector_icon.png",
+"RoomSystem": "",
+"RoomsEditor": ""
+}
+
+[application]
+
+config/name="3D RoomEdit"
+run/main_scene="res://DemoLevel.tscn"
+config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "MasonryTool", "RoomTool" )
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

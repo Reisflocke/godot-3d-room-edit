@@ -1,0 +1,376 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://addons/MasonryTool/MasonryData.gd" type="Script" id=1]
+[ext_resource path="res://addons/MasonryTool/MasonryTool.gd" type="Script" id=2]
+[ext_resource path="res://addons/RoomTool/RoomTool.gd" type="Script" id=3]
+[ext_resource path="res://demo_assets/floor/tile_black_white.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://demo_assets/wall/white_wall.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://addons/ToolCore/Generator/CollisionGenerator.gd" type="Script" id=6]
+[ext_resource path="res://addons/MasonryTool/Generator/MasonryGenerator.gd" type="Script" id=7]
+[ext_resource path="res://addons/ToolCore/Generator/MultiMeshMaker.gd" type="Script" id=8]
+[ext_resource path="res://demo_assets/wall_top.tres" type="PlaneMesh" id=9]
+[ext_resource path="res://addons/RoomTool/collision_shape.shape" type="Shape" id=10]
+[ext_resource path="res://addons/RoomTool/Room.gd" type="Script" id=11]
+[ext_resource path="res://demo_scripts/player.gd" type="Script" id=12]
+[ext_resource path="res://demo_assets/wall/red_wall.obj" type="ArrayMesh" id=13]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( -0.5, 3, 0.5, 0.5, 3, -0.5, 0.5, 3, 0.5, -0.5, 3, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 3, 0.5, -0.5, 3, -0.5, 0.5, 3, -0.5, -0.5, 3, 0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 3, 0.5, -0.5, 0, 0.5, -0.5, 3, 0.5, 0.5, 0, 0.5, 0.5, 3, -0.5, -0.5, 0, -0.5, -0.5, 3, -0.5, 0.5, 0, -0.5 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=3]
+material = SubResource( 2 )
+size = Vector2( 1, 1 )
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 1 )
+floor_data = [ [ ExtResource( 4 ), [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( -1, 1 ), Vector2( -1, 0 ), Vector2( -1, -1 ), Vector2( 0, -1 ), Vector2( 1, -1 ), Vector2( 1, 0 ), Vector2( 1, 1 ), Vector2( 0, 2 ), Vector2( 0, 4 ), Vector2( 0, 3 ), Vector2( -1, 3 ), Vector2( -1, 4 ), Vector2( 1, 4 ), Vector2( 1, 3 ), Vector2( 2, 3 ), Vector2( 2, 4 ), Vector2( 3, 3 ), Vector2( 3, 4 ) ] ] ]
+wall_data = [ [ Vector2( -1, 2 ), [ ExtResource( 5 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 1, 2 ), [ ExtResource( 13 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, 2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, 1 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, 0 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, -1 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 1 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 0 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, -1 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 1, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 0, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -1, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 3 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 4 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 3, 2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 4, 2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 4, 3 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 4, 4 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -1, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 0, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 1, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 3, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 4, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ] ]
+wall_top = SubResource( 3 )
+wall_shape = SubResource( 1 )
+
+[sub_resource type="MultiMesh" id=16]
+transform_format = 1
+instance_count = 20
+mesh = ExtResource( 4 )
+transform_array = PoolVector3Array( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3, 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4 )
+
+[sub_resource type="MultiMesh" id=17]
+transform_format = 1
+instance_count = 110
+mesh = ExtResource( 5 )
+transform_array = PoolVector3Array( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 0, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 1.5, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 1.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0, 2, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, 1.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0, 1, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, 0.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0, 0, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, -0.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0, -1, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, -1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -0.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, -1.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0, -2, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, -2.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, 1, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, 0.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, 0, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, -0.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, -1, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0, -1, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -0.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, -1.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, -2, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, -2.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, -2, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, -2.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, -2, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -2.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 0, -2, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, -2.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, 2, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, 1.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, 3, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0, 3, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, 2.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, 4, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, 3.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0, 5, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, 4.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, 0, 2, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 0, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 1.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 0, 2, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5, 0, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 1.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 0, 3, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5, 0, 3, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 2.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 0, 4, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5, 0, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 3.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 0, 5, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 4.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, 5, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 5, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 4.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0, 5, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, 4.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, 0, 5, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 0, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 4.5, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 0, 5, -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5, 0, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5.5, -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 4.5 )
+
+[sub_resource type="MultiMesh" id=18]
+transform_format = 1
+instance_count = 2
+mesh = ExtResource( 13 )
+transform_array = PoolVector3Array( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0, 2, -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 2 )
+
+[sub_resource type="MultiMesh" id=19]
+transform_format = 1
+instance_count = 28
+mesh = SubResource( 3 )
+transform_array = PoolVector3Array( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -1, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -2, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 3, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 3, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 5, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 5 )
+
+[sub_resource type="NavigationMesh" id=20]
+vertices = PoolVector3Array( 0.484178, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 0.484178, 0, 1.5, -0.5, 0, 1.5, -0.5, 0, 0.5, 0.5, 0, 1.5, 0.5, 0, 0.5, -0.515822, 0, 1.5, -1.5, 0, 1.5, -1.5, 0, 0.5, -0.5, 0, 1.5, -0.5, 0, 0.5, -0.515822, 0, 0.5, -1.5, 0, 0.5, -1.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.515822, 0, -0.5, -1.5, 0, -0.5, -1.5, 0, -1.5, -0.5, 0, -0.5, -0.5, 0, -1.5, 0.484178, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, -1.5, 0.5, 0, -0.5, 0.5, 0, -1.5, 1.48418, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, -1.5, 1.5, 0, -0.5, 1.5, 0, -1.5, 1.48418, 0, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 1.5, 0, 0.5, 1.5, 0, -0.5, 1.48418, 0, 1.5, 0.5, 0, 1.5, 0.5, 0, 0.5, 1.5, 0, 1.5, 1.5, 0, 0.5, 0.484178, 0, 2.5, -0.5, 0, 2.5, -0.5, 0, 1.5, 0.5, 0, 2.5, 0.5, 0, 1.5, 0.484178, 0, 4.5, -0.5, 0, 4.5, -0.5, 0, 3.5, 0.5, 0, 4.5, 0.5, 0, 3.5, 0.484178, 0, 3.5, -0.5, 0, 3.5, -0.5, 0, 2.5, 0.5, 0, 3.5, 0.5, 0, 2.5, -0.515822, 0, 3.5, -1.5, 0, 3.5, -1.5, 0, 2.5, -0.5, 0, 3.5, -0.5, 0, 2.5, -0.515822, 0, 4.5, -1.5, 0, 4.5, -1.5, 0, 3.5, -0.5, 0, 4.5, -0.5, 0, 3.5, 1.48418, 0, 4.5, 0.5, 0, 4.5, 0.5, 0, 3.5, 1.5, 0, 4.5, 1.5, 0, 3.5, 1.48418, 0, 3.5, 0.5, 0, 3.5, 0.5, 0, 2.5, 1.5, 0, 3.5, 1.5, 0, 2.5, 2.48418, 0, 3.5, 1.5, 0, 3.5, 1.5, 0, 2.5, 2.5, 0, 3.5, 2.5, 0, 2.5, 2.48418, 0, 4.5, 1.5, 0, 4.5, 1.5, 0, 3.5, 2.5, 0, 4.5, 2.5, 0, 3.5, 3.48418, 0, 3.5, 2.5, 0, 3.5, 2.5, 0, 2.5, 3.5, 0, 3.5, 3.5, 0, 2.5, 3.48418, 0, 4.5, 2.5, 0, 4.5, 2.5, 0, 3.5, 3.5, 0, 4.5, 3.5, 0, 3.5 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 0, 2, 3 ), PoolIntArray( 3, 2, 4 ), PoolIntArray( 5, 6, 7 ), PoolIntArray( 5, 7, 8 ), PoolIntArray( 8, 7, 9 ), PoolIntArray( 10, 11, 12 ), PoolIntArray( 10, 12, 13 ), PoolIntArray( 13, 12, 14 ), PoolIntArray( 15, 16, 17 ), PoolIntArray( 15, 17, 18 ), PoolIntArray( 18, 17, 19 ), PoolIntArray( 20, 21, 22 ), PoolIntArray( 20, 22, 23 ), PoolIntArray( 23, 22, 24 ), PoolIntArray( 25, 26, 27 ), PoolIntArray( 25, 27, 28 ), PoolIntArray( 28, 27, 29 ), PoolIntArray( 30, 31, 32 ), PoolIntArray( 30, 32, 33 ), PoolIntArray( 33, 32, 34 ), PoolIntArray( 35, 36, 37 ), PoolIntArray( 35, 37, 38 ), PoolIntArray( 38, 37, 39 ), PoolIntArray( 40, 41, 42 ), PoolIntArray( 40, 42, 43 ), PoolIntArray( 43, 42, 44 ), PoolIntArray( 45, 46, 47 ), PoolIntArray( 45, 47, 48 ), PoolIntArray( 48, 47, 49 ), PoolIntArray( 50, 51, 52 ), PoolIntArray( 50, 52, 53 ), PoolIntArray( 53, 52, 54 ), PoolIntArray( 55, 56, 57 ), PoolIntArray( 55, 57, 58 ), PoolIntArray( 58, 57, 59 ), PoolIntArray( 60, 61, 62 ), PoolIntArray( 60, 62, 63 ), PoolIntArray( 63, 62, 64 ), PoolIntArray( 65, 66, 67 ), PoolIntArray( 65, 67, 68 ), PoolIntArray( 68, 67, 69 ), PoolIntArray( 70, 71, 72 ), PoolIntArray( 70, 72, 73 ), PoolIntArray( 73, 72, 74 ), PoolIntArray( 75, 76, 77 ), PoolIntArray( 75, 77, 78 ), PoolIntArray( 78, 77, 79 ), PoolIntArray( 80, 81, 82 ), PoolIntArray( 80, 82, 83 ), PoolIntArray( 83, 82, 84 ), PoolIntArray( 85, 86, 87 ), PoolIntArray( 85, 87, 88 ), PoolIntArray( 88, 87, 89 ), PoolIntArray( 90, 91, 92 ), PoolIntArray( 90, 92, 93 ), PoolIntArray( 93, 92, 94 ), PoolIntArray( 95, 96, 97 ), PoolIntArray( 95, 97, 98 ), PoolIntArray( 98, 97, 99 ) ]
+
+[sub_resource type="MultiMesh" id=9]
+transform_format = 1
+instance_count = 9
+mesh = ExtResource( 9 )
+transform_array = PoolVector3Array( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -1 )
+
+[sub_resource type="MultiMesh" id=10]
+transform_format = 1
+instance_count = 11
+mesh = ExtResource( 9 )
+transform_array = PoolVector3Array( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18182, 3, 0.363636, 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18182, 3, -0.636364, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18182, 3, -0.636364, 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18182, 3, 0.363636, 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181818, 3, 0.363636, 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181818, 3, -0.636364, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818182, 3, 0.363636, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818182, 3, -0.636364, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81818, 3, -0.636364, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81818, 3, 1.36364, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81818, 3, 0.363636 )
+
+[sub_resource type="CylinderShape" id=11]
+radius = 0.4
+
+[sub_resource type="CylinderMesh" id=12]
+top_radius = 0.4
+bottom_radius = 0.5
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0.501961, 0.501961, 1, 1 )
+
+[sub_resource type="Environment" id=14]
+background_mode = 1
+
+[node name="DemoLevel" type="Spatial"]
+
+[node name="Masonry" type="Spatial" parent="."]
+script = ExtResource( 2 )
+masonry_data = SubResource( 15 )
+
+[node name="Generator" type="Spatial" parent="Masonry"]
+script = ExtResource( 7 )
+
+[node name="MultiMeshInstance" type="MultiMeshInstance" parent="Masonry/Generator"]
+use_in_baked_light = true
+multimesh = SubResource( 16 )
+script = ExtResource( 8 )
+
+[node name="MultiMeshInstance2" type="MultiMeshInstance" parent="Masonry/Generator"]
+use_in_baked_light = true
+multimesh = SubResource( 17 )
+script = ExtResource( 8 )
+
+[node name="MultiMeshInstance3" type="MultiMeshInstance" parent="Masonry/Generator"]
+use_in_baked_light = true
+multimesh = SubResource( 18 )
+script = ExtResource( 8 )
+
+[node name="MultiMeshInstance4" type="MultiMeshInstance" parent="Masonry/Generator"]
+use_in_baked_light = true
+multimesh = SubResource( 19 )
+script = ExtResource( 8 )
+
+[node name="CollisionGenerator" type="StaticBody" parent="Masonry/Generator"]
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape17" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape18" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape19" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape20" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape21" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape22" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape23" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape24" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape25" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape26" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape27" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape28" type="CollisionShape" parent="Masonry/Generator/CollisionGenerator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5 )
+shape = SubResource( 1 )
+
+[node name="Navigation" type="Navigation" parent="Masonry/Generator"]
+visible = false
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Masonry/Generator/Navigation"]
+navmesh = SubResource( 20 )
+
+[node name="RoomSystem" type="Spatial" parent="."]
+script = ExtResource( 3 )
+room_data = [ PoolVector3Array( -1, 0, 1, -1, 0, 0, -1, 0, -1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, -1 ), PoolVector3Array( -1, 0, 4, -1, 0, 3, 0, 0, 3, 0, 0, 4, 1, 0, 4, 1, 0, 3, 2, 0, 4, 2, 0, 3, 3, 0, 3, 3, 0, 5, 3, 0, 4 ) ]
+
+[node name="Area" type="Area" parent="RoomSystem"]
+visible = false
+script = ExtResource( 11 )
+ceiling = NodePath("MultiMeshInstance")
+camera = NodePath("Camera")
+
+[node name="MultiMeshInstance" type="MultiMeshInstance" parent="RoomSystem/Area"]
+multimesh = SubResource( 9 )
+script = ExtResource( 8 )
+
+[node name="Camera" type="Camera" parent="RoomSystem/Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0 )
+cull_mask = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="RoomSystem/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="RoomSystem/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="RoomSystem/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="RoomSystem/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="RoomSystem/Area"]
+shape = ExtResource( 10 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="RoomSystem/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="RoomSystem/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="RoomSystem/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="RoomSystem/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
+shape = ExtResource( 10 )
+
+[node name="Area2" type="Area" parent="RoomSystem"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18182, 0, 3.63636 )
+visible = false
+script = ExtResource( 11 )
+ceiling = NodePath("MultiMeshInstance")
+camera = NodePath("Camera")
+
+[node name="MultiMeshInstance" type="MultiMeshInstance" parent="RoomSystem/Area2"]
+multimesh = SubResource( 10 )
+script = ExtResource( 8 )
+
+[node name="Camera" type="Camera" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0 )
+cull_mask = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18182, 0, 0.363636 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18182, 0, -0.636364 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18182, 0, -0.636364 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18182, 0, 0.363636 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181818, 0, 0.363636 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181818, 0, -0.636364 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818182, 0, 0.363636 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818182, 0, -0.636364 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81818, 0, -0.636364 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81818, 0, 1.36364 )
+shape = ExtResource( 10 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="RoomSystem/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81818, 0, 0.363636 )
+shape = ExtResource( 10 )
+
+[node name="Player" type="KinematicBody" parent="." groups=[
+"Player",
+]]
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="Lighting" type="Spatial" parent="."]
+
+[node name="OmniLight" type="OmniLight" parent="Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+shadow_enabled = true
+omni_range = 4.0
+
+[node name="OmniLight2" type="OmniLight" parent="Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 3.5 )
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 14 )

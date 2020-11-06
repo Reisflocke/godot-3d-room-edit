@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/RoomTool/Editor/RoomEditor.gd" type="Script" id=1]
+[ext_resource path="res://addons/RoomTool/Editor/Edits/TileEdit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/RoomTool/Editor/RoomContainer.tscn" type="PackedScene" id=3]
+
+[node name="RoomsEditor" type="Spatial"]
+script = ExtResource( 1 )
+room_container = ExtResource( 3 )
+tile_edit = ExtResource( 2 )

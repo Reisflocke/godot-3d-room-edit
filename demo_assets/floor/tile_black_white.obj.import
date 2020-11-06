@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tile_black_white.obj-39a0c47beaf6b86bb8621b0adfd4845b.mesh"
+
+[deps]
+
+files=[ "res://.import/tile_black_white.obj-39a0c47beaf6b86bb8621b0adfd4845b.mesh" ]
+
+source_file="res://demo_assets/floor/tile_black_white.obj"
+dest_files=[ "res://.import/tile_black_white.obj-39a0c47beaf6b86bb8621b0adfd4845b.mesh", "res://.import/tile_black_white.obj-39a0c47beaf6b86bb8621b0adfd4845b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

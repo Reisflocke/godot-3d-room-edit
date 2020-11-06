@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/nav_mesh.obj-737400df5a2e6efbbd242c162ab73ddb.mesh"
+
+[deps]
+
+files=[ "res://.import/nav_mesh.obj-737400df5a2e6efbbd242c162ab73ddb.mesh" ]
+
+source_file="res://addons/MasonryTool/Generator/nav_mesh.obj"
+dest_files=[ "res://.import/nav_mesh.obj-737400df5a2e6efbbd242c162ab73ddb.mesh", "res://.import/nav_mesh.obj-737400df5a2e6efbbd242c162ab73ddb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
