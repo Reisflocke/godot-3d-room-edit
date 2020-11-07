@@ -25,7 +25,7 @@ albedo_color = Color( 0, 0, 0, 1 )
 material = SubResource( 2 )
 size = Vector2( 1, 1 )
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 1 )
 floor_data = [ [ ExtResource( 4 ), [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( -1, 1 ), Vector2( -1, 0 ), Vector2( -1, -1 ), Vector2( 0, -1 ), Vector2( 1, -1 ), Vector2( 1, 0 ), Vector2( 1, 1 ), Vector2( 0, 2 ), Vector2( 0, 4 ), Vector2( 0, 3 ), Vector2( -1, 3 ), Vector2( -1, 4 ), Vector2( 1, 4 ), Vector2( 1, 3 ), Vector2( 2, 3 ), Vector2( 2, 4 ), Vector2( 3, 3 ), Vector2( 3, 4 ) ] ] ]
 wall_data = [ [ Vector2( -1, 2 ), [ ExtResource( 5 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 1, 2 ), [ ExtResource( 13 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, 2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, 1 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, 0 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, -1 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 1 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 0 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, -1 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 1, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 0, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -1, -2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 3 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 4 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -2, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 3, 2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 4, 2 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 4, 3 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 4, 4 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( -1, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 0, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 1, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 2, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 3, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ], [ Vector2( 4, 5 ), [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ] ] ]
@@ -89,9 +89,10 @@ background_mode = 1
 
 [node name="Masonry" type="Spatial" parent="."]
 script = ExtResource( 2 )
-masonry_data = SubResource( 15 )
+masonry_data = SubResource( 21 )
 
 [node name="Generator" type="Spatial" parent="Masonry"]
+visible = false
 script = ExtResource( 7 )
 
 [node name="MultiMeshInstance" type="MultiMeshInstance" parent="Masonry/Generator"]
